@@ -13,9 +13,6 @@ Node.js ver18.x
 docker-compose up -d
 
 docker-compose exec web bash
-
-# コンテナに入ったあとに「パスを通す」を反映
-source ~/.bash
 ```
 
 

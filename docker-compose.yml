@@ -1,7 +1,7 @@
 version: “3.8”
 
 volumes:
-  mysql-data:
+  postgres-data:
 
 services:
   web:
@@ -14,7 +14,6 @@ services:
     restart: always
     volumes:
       - ./web/html:/var/www/html
-      # - ./web/volumes/.bash:/root/.bash
       - ./web/volumes/apache2:/etc/apache2
       - ./web/volumes/supervisord.conf:/etc/supervisor/supervisord.conf
       - ./web/volumes/backup_db:/home/backup_db
@@ -28,16 +27,15 @@ services:
   db:
     build: ./db
     ports:
-      # - 3306:3306
-      - 506:3306
+      # - 5432:5432
+      - 554:5432
     restart: always
     platform: linux/x86_64
     environment:
-      # MYSQL_USER: my_user
-      MYSQL_PASSWORD: test1234
-      MYSQL_ROOT_PASSWORD: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
     volumes:
-       - mysql-data:/var/lib/mysql
+       - postgres-data:/var/lib/postgresql/data
     tty: true
     privileged: true 
 

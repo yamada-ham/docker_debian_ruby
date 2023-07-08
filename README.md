@@ -3,11 +3,9 @@
 ## システム環境
 ```
 Ruby
-MySQL8
+PostgreSQL
 Apache
 Node.js ver18.x
-FTP
-Ngrok
 ```
 
 ## 構築手順

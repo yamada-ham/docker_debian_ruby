@@ -5,7 +5,7 @@ RUN apt update
 # 回答求められたらデフォルト
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt -y install wget curl vim lsof sudo tree cron supervisor vsftpd default-mysql-server git
+RUN apt -y install wget curl vim lsof sudo tree cron supervisor vsftpd default-mysql-server postgresql-client git
 
 # Apache
 RUN apt -y install apache2
@@ -21,10 +21,6 @@ RUN gem install rails
 ENV TZ=Asia/Tokyo
 # 言語設定 UTF-8を使えるようにする
 ENV LC_ALL C.UTF-8
-
-
-
-
 
 COPY cmd.sh /cmd.sh
 CMD ["sh" , "/cmd.sh"]

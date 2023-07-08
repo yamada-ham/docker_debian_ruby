@@ -1,0 +1,30 @@
+FROM ruby:3.2.2
+
+RUN apt update
+
+# 回答求められたらデフォルト
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt -y install wget curl vim lsof sudo tree cron supervisor vsftpd default-mysql-server git
+
+# Apache
+RUN apt -y install apache2
+
+# Node.js
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt install -y nodejs
+
+# rails インストール
+RUN gem install rails
+
+# 日本時間
+ENV TZ=Asia/Tokyo
+# 言語設定 UTF-8を使えるようにする
+ENV LC_ALL C.UTF-8
+
+
+
+
+
+COPY cmd.sh /cmd.sh
+CMD ["sh" , "/cmd.sh"]

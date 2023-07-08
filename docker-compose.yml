@@ -1,0 +1,47 @@
+version: “3.8”
+
+volumes:
+  mysql-data:
+
+services:
+  web:
+    build: ./web
+    ports:
+      # - 80:80
+      # - 443:443
+      - 580:80
+      - 581:81
+      - 582:82
+      - 583:83
+      - 584:84
+      - 3500:3000
+    restart: always
+    volumes:
+      - ./web/html:/var/www/html
+      # - ./web/volumes/.bash:/root/.bash
+      - ./web/volumes/apache2:/etc/apache2
+      - ./web/volumes/supervisord.conf:/etc/supervisor/supervisord.conf
+      - ./web/volumes/backup_db:/home/backup_db
+    working_dir: /var/www/html
+    tty: true
+    # platform: linux/x86_64 m1以外はコメントアウト
+    privileged: true 
+    depends_on: 
+      - db
+
+  db:
+    build: ./db
+    ports:
+      # - 3306:3306
+      - 506:3306
+    restart: always
+    platform: linux/x86_64
+    environment:
+      # MYSQL_USER: my_user
+      MYSQL_PASSWORD: test1234
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+       - mysql-data:/var/lib/mysql
+    tty: true
+    privileged: true 
+

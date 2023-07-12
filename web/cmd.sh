@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-source ~/.bash &
+# Redisサーバーを起動
+service redis-server start
 
 # バックグラウンドで実行するパッケージ
 # apache2

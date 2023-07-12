@@ -5,7 +5,7 @@ RUN apt update
 # 回答求められたらデフォルト
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt -y install wget curl vim lsof sudo tree cron supervisor vsftpd default-mysql-server postgresql-client git
+RUN apt -y install wget curl vim lsof sudo tree cron supervisor vsftpd default-mysql-server postgresql-client git redis-server
 
 # Apache
 RUN apt -y install apache2

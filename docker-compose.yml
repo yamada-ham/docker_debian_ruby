@@ -11,6 +11,8 @@ services:
       # - 443:443
       - 580:80
       - 3500:3000
+      - 3501:3001
+      - 3502:3002
     restart: always
     volumes:
       - ./web/html:/var/www/html

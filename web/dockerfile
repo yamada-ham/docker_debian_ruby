@@ -24,6 +24,13 @@ RUN touch /var/log/php_errors.log && chmod 777 /var/log/php_errors.log
 # Apache
 RUN apt -y install apache2 libapache2-mod-php8.2
 
+# phpMyAdmin
+# RUN curl -OL https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.tar.gz && \
+# tar xzvf phpMyAdmin-5.2.1-all-languages.tar.gz && \
+# mv phpMyAdmin-5.2.1-all-languages phpMyAdmin && \
+# rm -rf phpMyAdmin-5.2.1-all-languages.tar.gz && \
+# mv ./phpMyAdmin /usr/share/
+
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt install -y nodejs

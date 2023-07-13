@@ -1,7 +1,7 @@
 version: “3.8”
 
 volumes:
-  postgres-data:
+  mysql-data:
 
 services:
   web:
@@ -10,6 +10,9 @@ services:
       # - 80:80
       # - 443:443
       - 580:80
+      - 581:81
+      - 582:82
+      - 583:83
       - 3500:3000
       - 3501:3001
       - 3502:3002
@@ -20,6 +23,7 @@ services:
       - ./web/volumes/supervisord.conf:/etc/supervisor/supervisord.conf
       - ./web/volumes/backup_db:/home/backup_db
       - ./web/volumes/php/8.2/apache2/php.ini:/etc/php/8.2/apache2/php.ini
+      - ./web/volumes/phpMyAdmin:/usr/share/phpMyAdmin
     working_dir: /var/www/html
     tty: true
     # platform: linux/x86_64 m1以外はコメントアウト
@@ -30,15 +34,16 @@ services:
   db:
     build: ./db
     ports:
-      # - 5432:5432
-      - 5432:5432
+      # - 3306:3306
+      - 536:3306
     restart: always
     platform: linux/x86_64
     environment:
-      POSTGRES_PASSWORD: root
-      POSTGRES_USER: root
+      # MYSQL_USER: my_user
+      # MYSQL_PASSWORD: test1234
+      MYSQL_ROOT_PASSWORD: root
     volumes:
-       - postgres-data:/var/lib/postgresql/data
+       - mysql-data:/var/lib/mysql
     tty: true
     privileged: true 
 

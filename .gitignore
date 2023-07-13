@@ -1,8 +1,4 @@
 web/html/*
-!web/html/apache2_log
-web/html/apache2_log/*
-!web/html/apache2_log/test.txt
-
 web/volumes/backup_db/*
 !web/volumes/backup_db/memo.txt
 

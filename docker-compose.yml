@@ -19,6 +19,7 @@ services:
       - ./web/volumes/apache2:/etc/apache2
       - ./web/volumes/supervisord.conf:/etc/supervisor/supervisord.conf
       - ./web/volumes/backup_db:/home/backup_db
+      - ./web/volumes/php/8.2/apache2/php.ini:/etc/php/8.2/apache2/php.ini
     working_dir: /var/www/html
     tty: true
     # platform: linux/x86_64 m1以外はコメントアウト
@@ -30,7 +31,7 @@ services:
     build: ./db
     ports:
       # - 5432:5432
-      - 554:5432
+      - 5432:5432
     restart: always
     platform: linux/x86_64
     environment:

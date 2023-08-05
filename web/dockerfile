@@ -33,7 +33,8 @@ RUN apt -y install apache2 libapache2-mod-php8.2
 
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt install -y nodejs
+    apt install -y nodejs && \
+    npm install -g @angular/cli
 
 # rails インストール
 RUN gem install rails
